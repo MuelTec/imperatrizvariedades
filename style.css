@@ -26,7 +26,17 @@
 
 body {
     height: 100vh;
-    background: rgb(228, 233, 247);
+    background: var(--boddy-color);
+    transition: var(--tran-04);
+}
+
+body.dark {
+    --boddy-color: #18191a;
+    --sidebar-color: #242526;
+    --primary-color: #3a3b3c;
+    --primary-color-ligth: #3a3b3c;
+    --toogle-color: #FFF;
+    --text-color: #CCC;
 }
 
 /* ===== Resuable CSS ===== */
@@ -34,12 +44,20 @@ body {
     font-size: 16px;
     font-weight: 500;
     color: var(--text-color);
+    transition: var(--tran-03);
+    white-space: nowrap;
+    opacity: 1;
+}
+
+.sidebar.close .text {
+    opacity: 0;
 }
 
 .sidebar .image {
     min-width: 60px;
     display: flex;
     align-items: center;
+    justify-content: center;
 }
 
 /* ===== Sidebar ===== */
@@ -51,6 +69,12 @@ body {
     width: 250px;
     padding: 10px 14px;
     background: var(--sidebar-color);
+    transition: var(--tran-05);
+    z-index: 100;
+}
+
+.sidebar.close {
+    width: 88px;
 }
 
 .sidebar li {
@@ -106,7 +130,7 @@ header .image-text .header-text {
     position: absolute;
     top: 50%;
     right: -25px;
-    transform: translateY(-50%);
+    transform: translateY(-50%) rotate(180deg);
     height: 25px;
     width: 25px;
     background: var(--primary-color);
@@ -116,9 +140,25 @@ header .image-text .header-text {
     border-radius: 50%;
     color: var(--sidebar-color);
     font-size: 22px;
+    transition: var(--tran-03);
 }
+.sidebar .menu {
+margin-top: 35px;
+}
+
+.sidebar.close header .toggle {
+    transform: translateY(-50%);
+    color: var(--text-color);
+}
+
+body.dark .sidebar header .toggle {
+    color: var(--text-color);
+}
+
 .sidebar .search-box{
     background: var(--primary-color-ligth);
+    border-radius: 6px;
+    transition: var(--tran-05);
 }
 
 .search-box input {
@@ -127,6 +167,8 @@ header .image-text .header-text {
     outline: none;
     border: none;
     border-radius: 6px;
+    font-size: 16px;
+    font-weight: 500;
     background: var(--primary-color-ligth);
 }
 
@@ -149,6 +191,11 @@ header .image-text .header-text {
     color: var(--sidebar-color);
 }
 
+body.dark .sidebar li a:hover .icon,
+body.dark .sidebar li a:hover .text{
+    color: var(--sidebar-color);
+}
+
 .sidebar .menu-bar {
     height: calc(100% - 50px);
     display: flex;
@@ -157,6 +204,8 @@ header .image-text .header-text {
 }
 
 .menu-bar .mode {
+    position: relative;
+    border-radius: 6px;
     background: var(--primary-color-ligth);
 }
 
@@ -169,19 +218,31 @@ header .image-text .header-text {
 
 .menu-bar .mode i {
     position: absolute;
+    transition: var(--tran-03);
 }
 
 .menu-bar .mode i.sun {
     opacity: 0;
 }
 
+body.dark .menu-bar .mode i.sun {
+    opacity: 1;
+}
+body.dark .menu-bar .mode i.moon {
+    opacity: 0;
+}
+
 .menu-bar .mode .toggle-switch {
+    position: absolute;
+    right: 0;
     display: flex;
     align-items: center;
     justify-content: center;
     height: 100%;
     min-width: 60px;
     cursor: pointer;
+    border-radius: 6px;
+    background: var(--primary-color-ligth);
 }
 
 .toggle-switch .switch {
@@ -206,5 +267,26 @@ header .image-text .header-text {
 }
 
 body.dark .switch::before {
-    left: 20px;
+    left: 24px;
+}
+
+.home {
+    position: relative;
+    left: 250px;
+    height: 100vh;
+    width: calc(100% - 250px);
+    background: var(--boddy-color);
+    transition: var(--tran-05);
+}
+
+.home .text {
+    font-size: 30px;
+    font-weight: 500;
+    color: var(--text-color);
+    padding: 8px 40px;
+}
+
+.sidebar.close ~ .home {
+    left: 88px;
+    width: calc(100% - 88px);
 }
