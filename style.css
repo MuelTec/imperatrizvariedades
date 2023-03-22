@@ -73,12 +73,6 @@ body {
     color: var(--text-color);
 }
 
-.sidebar li a {
-    height: 100%;
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-}
 
 .sidebar header {
     position: relative;
@@ -121,4 +115,22 @@ header .image-text .header-text {
     border-radius: 50%;
     color: var(--sidebar-color);
     font-size: 22px;
+}
+.sidebar .search-box{
+    background: var(--primary-color-ligth);
+}
+
+.search-box input {
+    height: 100%;
+    width: 100%;
+    outline: none;
+    border: none;
+    background: var(--primary-color-ligth);
+}
+
+.sidebar li a {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
 }
